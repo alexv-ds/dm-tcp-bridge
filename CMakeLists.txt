@@ -35,4 +35,17 @@ add_compile_options($<$<COMPILE_LANG_AND_ID:CXX,MSVC>:/permissive->)
 
 include(cmake/get_cpm.cmake)
 
+CPMAddPackage(
+  NAME spdlog
+  VERSION 1.13.0
+  URL https://github.com/gabime/spdlog/archive/refs/tags/v1.13.0.tar.gz
+  URL_HASH SHA3_256=5207d1b63e3c1466d30b3e28a0d7accfccad6eca283df8c04999dde9fdf3de68
+  OPTIONS
+  "SPDLOG_USE_STD_FORMAT ON"
+  "SPDLOG_BUILD_SHARED OFF"
+  "SPDLOG_ENABLE_PCH ON"
+  "SPDLOG_BUILD_PIC ON"
+  "SPDLOG_SYSTEM_INCLUDES ON"
+)
+
 add_subdirectory(core)

@@ -8,13 +8,17 @@ add_library(${PROJECT_NAME}-core STATIC
   src/BridgeImpl.cpp
   src/BridgeImpl.hpp
 )
-target_include_directories(${PROJECT_NAME}-core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
 add_library(${PROJECT_NAME}::core ALIAS ${PROJECT_NAME}-core)
+
+target_include_directories(${PROJECT_NAME}-core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 target_compile_options(${PROJECT_NAME}-core PRIVATE
   $<IF:$<CXX_COMPILER_ID:MSVC>,/W4,-Wall -Wextra -Wpedantic>
 )
+
+target_link_libraries(${PROJECT_NAME}-core PRIVATE spdlog::spdlog)
+
+
 
 CPMAddPackage(
   NAME json
@@ -81,3 +85,4 @@ CPMAddPackage(
   URL_HASH SHA3_256=4ed9f2b413939ec3cee40cbccd1353e071efa964ae2a8f494df61ad2c80dfb1f
 )
 target_link_libraries(${PROJECT_NAME}-core PRIVATE concurrentqueue)
+

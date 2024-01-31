@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <numeric>
 #include <vector>
+#include <random>
 #include "Connection.hpp"
 
 namespace dm_bridge {
@@ -28,9 +29,9 @@ namespace dm_bridge {
 
   ////////////////
   struct Bridge::Options {
-    std::string ip = "0.0.0.0";
+    std::string ip = "127.0.0.1";
     std::string auth_token;
-    std::uint16_t max_connections = std::numeric_limits<decltype(max_connections)>::max();
+    std::uint16_t max_connections = 10;
     std::uint16_t message_queue_size = 20;
   };
 }
