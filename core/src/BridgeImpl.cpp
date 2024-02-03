@@ -78,6 +78,6 @@ namespace dm_bridge {
 
   void BridgeImpl::on_listen_tcp_handle_listen(const uvw::listen_event&, uvw::tcp_handle& handle) noexcept {
     uvw::loop& loop_ref = handle.parent();
-    handle.accept()
+    //handle.accept()
   }
 } // dm_bridge

@@ -31,6 +31,9 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 add_compile_options($<$<COMPILE_LANG_AND_ID:CXX,MSVC>:/permissive->)
 
+set(CMAKE_C_FLAGS -m32)
+set(CMAKE_CXX_FLAGS -m32)
+
 #######
 
 include(cmake/get_cpm.cmake)

@@ -40,3 +40,6 @@ build/
 
 #vscode
 .vscode/
+
+#cpm
+cpm-cache/

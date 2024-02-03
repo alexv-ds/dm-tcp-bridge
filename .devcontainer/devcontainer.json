@@ -1,0 +1,24 @@
+{
+  "name": "My Dev Container",
+  "build" : {
+    "dockerfile": "./Dockerfile",
+    "context": ".."
+  },
+  "capAdd": [
+    "SYS_PTRACE"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-extension-pack",
+        "twxs.cmake",
+        "ms-vscode.cmake-tools"
+      ]
+    }
+  },
+  "remoteEnv": {
+    "CPM_USE_NAMED_CACHE_DIRECTORIES" : "ON",
+    "CPM_SOURCE_CACHE" : "cpm-cache"
+  }
+}

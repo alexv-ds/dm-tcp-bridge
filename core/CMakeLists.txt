@@ -7,6 +7,7 @@ add_library(${PROJECT_NAME}-core STATIC
   src/Bridge.cpp
   src/BridgeImpl.cpp
   src/BridgeImpl.hpp
+  include/dm-tcp-bridge/Credentials.hpp
 )
 add_library(${PROJECT_NAME}::core ALIAS ${PROJECT_NAME}-core)
 
