@@ -3,15 +3,14 @@ add_library(${PROJECT_NAME}-core STATIC
   src/delme.cpp
 
   src/IdGenerator_UUIDv4.cpp
-  include/dm-tcp-bridge/IdGenerator_UUIDv4.hpp
-
-  )
+  src/TcpConnectionProvider.cpp
+)
 add_library(${PROJECT_NAME}::core ALIAS ${PROJECT_NAME}-core)
 
 target_include_directories(${PROJECT_NAME}-core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 target_compile_options(${PROJECT_NAME}-core PRIVATE
-  $<IF:$<CXX_COMPILER_ID:MSVC>,/W4,-Wall -Wextra -Wpedantic>
+  $<IF:$<CXX_COMPILER_ID:MSVC>,/W4,-Wall -Wextra -Wpedantic -Wno-unused-parameter>
 )
 
 target_link_libraries(${PROJECT_NAME}-core PRIVATE spdlog::spdlog)
