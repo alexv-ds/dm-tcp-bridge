@@ -18,8 +18,4 @@
     }
   },
   "runArgs": ["-u", "1000:1000"]
-  // "remoteEnv": {
-  //   "CPM_USE_NAMED_CACHE_DIRECTORIES" : "ON",
-  //   "CPM_SOURCE_CACHE" : "cpm-cache"
-  // }
 }
