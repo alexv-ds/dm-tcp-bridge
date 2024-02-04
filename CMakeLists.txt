@@ -34,6 +34,8 @@ add_compile_options($<$<COMPILE_LANG_AND_ID:CXX,MSVC>:/permissive->)
 set(CMAKE_C_FLAGS -m32)
 set(CMAKE_CXX_FLAGS -m32)
 
+add_compile_options(-march=native)
+
 #######
 
 include(cmake/get_cpm.cmake)
@@ -52,3 +54,6 @@ CPMAddPackage(
 )
 
 add_subdirectory(core)
+
+add_executable(main main.cpp)
+target_link_libraries(main PRIVATE dm-tcp-bridge::core)

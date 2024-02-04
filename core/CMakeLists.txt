@@ -1,14 +1,11 @@
 
 add_library(${PROJECT_NAME}-core STATIC
-  src/Connection.cpp
-  include/dm-tcp-bridge/Connection.hpp
-  include/dm-tcp-bridge/Bridge.hpp
-  include/dm-tcp-bridge/Message.hpp
-  src/Bridge.cpp
-  src/BridgeImpl.cpp
-  src/BridgeImpl.hpp
-  include/dm-tcp-bridge/Credentials.hpp
-)
+  src/delme.cpp
+
+  src/IdGenerator_UUIDv4.cpp
+  include/dm-tcp-bridge/IdGenerator_UUIDv4.hpp
+
+  )
 add_library(${PROJECT_NAME}::core ALIAS ${PROJECT_NAME}-core)
 
 target_include_directories(${PROJECT_NAME}-core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -34,7 +31,7 @@ target_link_libraries(${PROJECT_NAME}-core PUBLIC nlohmann_json::nlohmann_json)
 
 CPMAddPackage(
   NAME libuv
-  VERSION 1.46.0
+  VERSION 1.47.0
   URL https://github.com/libuv/libuv/archive/refs/tags/v1.47.0.tar.gz
   URL_HASH SHA3_256=a7499acafe8ff368fb525459b9e02ca7c994a70acd7c31411537b10ec0c3b3d4
   OPTIONS
@@ -87,3 +84,10 @@ CPMAddPackage(
 )
 target_link_libraries(${PROJECT_NAME}-core PRIVATE concurrentqueue)
 
+
+CPMAddPackage(
+  GITHUB_REPOSITORY crashoz/uuid_v4
+  GIT_TAG bae4100d7a4b08fc48faecbc49f0fd135f6f2a24
+  DOWNLOAD_ONLY
+)
+target_include_directories(${PROJECT_NAME}-core PRIVATE ${uuid_v4_SOURCE_DIR})
